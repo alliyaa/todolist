@@ -3,11 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    height:100%;
+   
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .wrapper{
-
+    height:100vh;
     display: grid;
     grid-template-columns: repeat(1, 1fr) repeat(1,5fr);
     grid-template-rows: 1fr 5fr min-content;
@@ -20,16 +21,21 @@ main
     grid-area: main;
     background-color:#dad7cd;
     color: #3a5a40;
+   
 }
-main > h1{
-text-align: center;
-}
+
 
 header
 {
     grid-area: header;
     background-color: #a3b18a;
-    color:#dad7cd;
+    color:#efeee8;
+}
+
+header > h1
+{
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .sidebar
@@ -37,4 +43,34 @@ header
         background-color: #3a5a40;
         color:#dad7cd;
         grid-area: sidebar;
+}
+
+.addnewButton{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10rem;
+}
+
+button
+{
+    outline: none;
+    border: none;
+    width: 4rem; 
+    height: 4rem;
+    border-radius: 50%;   
+    color:#3a5a40;
+    background-color:#dad7cd; 
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.SideBarContent
+{
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 1.1rem;
+
 }
