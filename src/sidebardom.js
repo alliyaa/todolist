@@ -1,3 +1,5 @@
+import {createNewProject} from './new';
+
 import './style.css';
 
 export function sidebardom()
@@ -30,16 +32,17 @@ export function sidebardom()
     projectsLink.classList.add('SideBarContent');
     return SidebarContent;
 
-    }
-   
-
-    
+    }  
     
     function addButton(){
     
         const addnewButton = document.createElement('button');
-        addnewButton.innerHTML+= "New";
+        addnewButton.innerHTML+="Project +";
         addnewButton.classList.add('addnewButton');
+        addnewButton.addEventListener('click',() => {
+            createNewProject();
+        });
+
         return addnewButton;
       
     }
@@ -48,7 +51,6 @@ export function sidebardom()
     sidebarM.appendChild(addButton());
     sidebar.appendChild(sidebarM);
     
-  
 
     return sidebar;
 }

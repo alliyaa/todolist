@@ -58,8 +58,8 @@ button
 {
     outline: none;
     border: none;
-    width: 4rem; 
-    height: 4rem;
+    width: 5rem; 
+    height: 5rem;
     border-radius: 50%;   
     color:#3a5a40;
     background-color:#dad7cd; 
@@ -73,4 +73,9 @@ button
     margin-top: 5rem;
     font-size: 1.1rem;
 
+}
+
+.newProjectDiv
+{
+    border: 2px solid blue;
 }
