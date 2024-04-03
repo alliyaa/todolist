@@ -2,6 +2,7 @@
 import './style.css';
 export function createNewProject() {
     const newProjectContainer = document.createElement('div');
+    newProjectContainer.classList.add('newContainer');
 
     const newProjectName = document.createElement('div');
     const mainDiv = document.querySelector('main');
@@ -26,8 +27,14 @@ export function createNewProject() {
     newProjectNotes.classList.add('newProjectDiv');
     newProjectContainer.appendChild(newProjectNotes);
     
+    
+   
+    const savebtn = document.createElement('button');
+    savebtn.classList.add('saveTask');
+    savebtn.innerHTML+="Save";
+
+    newProjectContainer.appendChild(savebtn);
     mainDiv.appendChild(newProjectContainer);
-  
 
     const displayProjectName = document.createElement('div');
     const displayProjectPriority = document.createElement('div');
@@ -70,6 +77,13 @@ export function createNewProject() {
     mainDiv.appendChild(displayProjectPriority);
     mainDiv.appendChild(displayProjectDate);
     mainDiv.appendChild(displayProjectNotes);
+
+    savebtn.addEventListener('click', () => {
+        newProjectName.textContent = "";
+        newProjectDate.textContent = "";
+        newProjectPriority.textContent = "";
+        newProjectNotes.textContent = "";
+    });
 }
 
 

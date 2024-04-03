@@ -65,8 +65,15 @@ button
     background-color:#dad7cd; 
     cursor: pointer;
     font-size: 1.1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+.saveTask
+{
+    background-color: #a3b18a;
+    color:#efeee8;
+
+}
 .SideBarContent
 {
     text-align: center;
@@ -78,4 +85,8 @@ button
 .newProjectDiv
 {
     border: 2px solid blue;
+}
+
+.newContainer{
+    border: 2px solid pink;
 }
