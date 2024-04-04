@@ -4,88 +4,74 @@ export function createNewProject() {
     const newProjectContainer = document.createElement('div');
     newProjectContainer.classList.add('newContainer');
 
-    const newProjectName = document.createElement('div');
     const mainDiv = document.querySelector('main');
-    newProjectName.contentEditable='true';
-    newProjectName.classList.add('newProjectDiv');
-    newProjectContainer.appendChild(newProjectName);
 
-      
-    const newProjectPriority = document.createElement('div');
-    newProjectPriority.contentEditable='true';
-    newProjectPriority.classList.add('newProjectDiv');
-    newProjectContainer.appendChild(newProjectPriority);
+    // Function to create editable part with label
+    function createEditablePart(labelText) {
+        const container = document.createElement('div');
 
-    const newProjectDate = document.createElement('div');
-    newProjectDate.contentEditable='true';
-    newProjectDate.classList.add('newProjectDiv');
-    newProjectContainer.appendChild(newProjectDate);
+        const label = document.createElement('span');
+        label.textContent = labelText + ": ";
+        container.appendChild(label);
 
-    const newProjectNotes = document.createElement('div');
-    newProjectNotes.contentEditable='true';
-    newProjectNotes.textContent="noemsks";
-    newProjectNotes.classList.add('newProjectDiv');
-    newProjectContainer.appendChild(newProjectNotes);
-    
-    
-   
+        const editable = document.createElement('div');
+        editable.contentEditable = true;
+        container.appendChild(editable);
+
+        return { container, editable };
+    }
+
+    // Create editable and non-editable parts for each project detail
+    const projectName = createEditablePart('Project Name');
+    const projectPriority = createEditablePart('Priority');
+    const projectDate = createEditablePart('Date');
+    const projectNotes = createEditablePart('Notes');
+
+    // Append editable parts to the newProjectContainer
+    newProjectContainer.appendChild(projectName.container);
+    newProjectContainer.appendChild(projectPriority.container);
+    newProjectContainer.appendChild(projectDate.container);
+    newProjectContainer.appendChild(projectNotes.container);
+
     const savebtn = document.createElement('button');
     savebtn.classList.add('saveTask');
-    savebtn.innerHTML+="Save";
-
+    savebtn.innerHTML += "Save";
     newProjectContainer.appendChild(savebtn);
+
     mainDiv.appendChild(newProjectContainer);
 
+    // Update display elements when input fields change
+    projectName.editable.addEventListener('input', () => {
+        displayProjectName.textContent = projectName.editable.textContent;
+    });
+    projectPriority.editable.addEventListener('input', () => {
+        displayProjectPriority.textContent = projectPriority.editable.textContent;
+    });
+    projectDate.editable.addEventListener('input', () => {
+        displayProjectDate.textContent = projectDate.editable.textContent;
+    });
+    projectNotes.editable.addEventListener('input', () => {
+        displayProjectNotes.textContent = projectNotes.editable.textContent;
+    });
+
+    // Display elements for the project details
     const displayProjectName = document.createElement('div');
     const displayProjectPriority = document.createElement('div');
     const displayProjectDate = document.createElement('div');
     const displayProjectNotes = document.createElement('div');
 
-   
-
-    let project = new newProject(newProjectName, newProjectDate, newProjectPriority, newProjectNotes);
-
-    // Update display elements when input fields change
-    newProjectName.addEventListener('input', () => {
-       
-       project.title = newProjectName.textContent;
-       displayProjectName.textContent = project.title;
-       displayProjectDate.textContent;
-       displayProjectPriority.textContent;
-       displayProjectNotes.textContent;
-    });
-    newProjectPriority.addEventListener('input', () => {
-       
-        project.priority = newProjectPriority.textContent;
-        displayProjectName.textContent;
-        displayProjectPriority.textContent = project.priority;
-        displayProjectDate.textContent;
-        displayProjectNotes.textContent;
-    });
-    newProjectDate.addEventListener('input', () => {
-        
-       project.duedate = newProjectDate.textContent;
-       displayProjectDate.textContent = project.duedate;
-    });
-    newProjectNotes.addEventListener('input', () => {
-      
-      project.notes = newProjectNotes.textContent;
-      displayProjectNotes.textContent = project.notes;
-    });
- 
     mainDiv.appendChild(displayProjectName);
     mainDiv.appendChild(displayProjectPriority);
     mainDiv.appendChild(displayProjectDate);
     mainDiv.appendChild(displayProjectNotes);
 
     savebtn.addEventListener('click', () => {
-        newProjectName.textContent = "";
-        newProjectDate.textContent = "";
-        newProjectPriority.textContent = "";
-        newProjectNotes.textContent = "";
+        projectName.editable.textContent = "";
+        projectPriority.editable.textContent = "";
+        projectDate.editable.textContent = "";
+        projectNotes.editable.textContent = "";
     });
 }
-
 
 
 
